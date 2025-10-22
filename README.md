@@ -1,0 +1,1 @@
+Some simple machine learning and projects to help me learn
