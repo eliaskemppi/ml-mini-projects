@@ -1,1 +1,1 @@
-Some simple machine learning and projects to help me learn
+Some simple machine learning projects to help me learn
