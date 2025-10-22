@@ -8,7 +8,7 @@ from matplotlib.animation import FuncAnimation
 # Step 1: Generate data
 
 mu1_real, mu2_real, mu3_real = [0, 0], [1, 3], [-2, 2]
-cov1_real, cov2_real, cov3_real = [[1, 0.3], [0.3, 1]], [[1, -0.7], [-0.7, 1]], [[1, 0], [0, 1]] 
+cov1_real, cov2_real, cov3_real = [[1, 0.3], [0.3, 1]], [[1, -0.7], [-0.7, 1]], [[1, 0], [0, 0.5]] 
 np.random.seed(42)
 data = np.vstack([
     np.random.multivariate_normal(mu1_real, cov1_real, 300),
@@ -49,7 +49,7 @@ for iter in range(50):
     Nk = gammas.sum(axis=0) # estimate of number of datapoints per class
     pi = Nk / N
     mu = (gammas.T @ data) / Nk[:, np.newaxis] # shape K, d
-    print(mu.shape)
+
     Sigma = []
     for k in range(K):
         diff = data - mu[k]
@@ -62,7 +62,7 @@ for iter in range(50):
 
 ### Animation
 fig, ax = plt.subplots(figsize=(7, 6))
-x, y = np.mgrid[-3:8:.05, -3:8:.05]
+x, y = np.mgrid[-4:8:.05, -4:8:.05]
 pos = np.dstack((x, y))
 colors = ['r', 'b', 'g']
 
